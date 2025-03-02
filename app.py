@@ -82,15 +82,16 @@ def main():
         st.subheader("Current Bill: ")
         df = pd.DataFrame(st.session_state.order_lst)
 
-        
-        st.write(df)
+    
         col1, col2, col3 = st.columns([3, 1, 1])
         with col1:
             st.write("Item")
-            for i in range(len(st.session_state.order_lst["item"])-1):
-                st.write(len(st.session_state.order_lst)-1)
-                st.write(st.session_state.order_lst["item"][i])
-                # st.caption(f"Will be paid by: {", ".join(map(str, st.session_state.order_lst['kkb_members'][i]))}")
+            for i in range(len(st.session_state.order_lst["item"])):
+                st.markdown(
+                    f"<p>{st.session_state.order_lst["item"][i]}</p>",
+                    unsafe_allow_html=True
+                )
+        
             st.write("Total")
 
         with col2:
@@ -98,7 +99,7 @@ def main():
                 f"<p style='text-align: right'>Quantity</p>",
                 unsafe_allow_html=True
             )
-            for i in range(len(st.session_state.order_lst["item"])-1):
+            for i in range(len(st.session_state.order_lst["item"])):
                 st.markdown(
                     f"<p style='text-align: right'>{st.session_state.order_lst["quantity"][i]}</p>",
                     unsafe_allow_html=True
@@ -109,7 +110,7 @@ def main():
                 f"<p style='text-align: right'>Amount</p>",
                 unsafe_allow_html=True
             )
-            for i in range(len(st.session_state.order_lst["item"])-1):
+            for i in range(len(st.session_state.order_lst["item"])):
                 st.markdown(
                     f"<p style='text-align: right'>₱{st.session_state.order_lst["price"][i]:,.2f}</p>",
                     unsafe_allow_html=True
