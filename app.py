@@ -115,9 +115,10 @@ def main():
                     f"<p style='text-align: right'>₱{st.session_state.order_lst["price"][i]:,.2f}</p>",
                     unsafe_allow_html=True
                 )
+            total_amount = sum(q * p for q, p in zip(st.session_state.order_lst["quantity"], st.session_state.order_lst["price"]))
 
             st.markdown(
-                f"<p style='text-align: right'>₱{sum(st.session_state.order_lst["price"]):,.2f}</p>",
+                f"<p style='text-align: right'>₱{total_amount:,.2f}</p>",
                 unsafe_allow_html=True
             )
 
